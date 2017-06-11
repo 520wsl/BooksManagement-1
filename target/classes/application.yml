@@ -1,0 +1,16 @@
+server:
+ port: 6688
+ session-timeout: 3600
+ uri-encoding: UTF-8
+ context-path: /books
+
+cs:
+ jdbc:
+  url: jdbc:mysql://127.0.0.1:3306/booksmanagement?characterEncoding=utf8&allowMultiQueries=true
+  driver: com.mysql.jdbc.Driver
+  username: root
+  password: admin  #键值之间有一个空格
+
+spring: datasource:initialize:false
+spring.session.store-type: none
+

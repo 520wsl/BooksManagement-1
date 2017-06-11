@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >  
+
+<!--http://blog.csdn.net/pk490525/article/details/16819307配置介绍路径-->
+<generatorConfiguration>  
+      
+    <!-- 一个数据库一个context -->  
+    <context id="infoGuardian" targetRuntime="MyBatis3Simple">  
+        <!-- 注释 -->  
+        <commentGenerator >  
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->  
+        </commentGenerator>  
+          
+        <!-- jdbc连接 -->  
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+           connectionURL="jdbc:mysql://127.0.0.1:3306/booksmanagement"
+           userId="root" password="admin">
+    	</jdbcConnection>  
+          
+        <!-- 类型转换 -->  
+        <javaTypeResolver>  
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+          
+        <!-- 生成实体类地址 -->    
+        <javaModelGenerator targetPackage="com.books.management.domain"  
+            targetProject=".\src\main\java" >  
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.lb.domain， true:com.lb.domain.[schemaName] -->  
+            <property name="enableSubPackages" value="false"/>  
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+          
+        <!-- 生成mapxml文件 -->  
+        <sqlMapGenerator targetPackage="com.books.management.mapper"  
+            targetProject=".\src\main\resources">  
+            <property name="enableSubPackages" value="false" />  
+        </sqlMapGenerator>  
+          
+        <!-- 生成mapxml对应client，也就是接口dao -->      
+        <javaClientGenerator targetPackage="com.books.management.mapper"  
+            targetProject=".\src\main\java" type="XMLMAPPER" >  
+            <property name="enableSubPackages" value="false" />  
+        </javaClientGenerator>  
+          
+        <!-- 配置表信息 -->   
+        <!--enableDeleteByExample：指定是否动态生成对应的sql语句-->   
+        <!-- <table  tableName="demo"></table>   -->
+    </context>  
+</generatorConfiguration>  
